@@ -12,3 +12,7 @@ Then /^"([^"]*)"と表示されていること$/ do |text|
     assert page.has_content?(text)
   end
 end
+
+When /^"([^"]*)"リンクをクリックする$/ do |link|
+  click_link(link)
+end
