@@ -1,0 +1,9 @@
+%header
+  %div
+    - if signed_in?
+      = link_to 'ログアウト', signout_path, method: 'delete'
+      = link_to 'ブログトップ', user_posts_path(current_user)
+      = link_to 'マイページ', user_path(current_user)
+    - else
+      = link_to 'ログイン', signin_path
+
