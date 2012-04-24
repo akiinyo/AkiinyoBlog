@@ -1,10 +1,10 @@
 %h1 新規投稿
 
-= form_for(@post) do |f|
+= form_for [user, post] do |f|
   = f.label 'タイトル'
   = f.text_field :title
 
   = f.label '本文'
-  = f.text_area :title
+  = f.text_area :body
 
   = f.submit '投稿する'

@@ -2,7 +2,7 @@
 %p Powered by Akiinyo
 
 %ul
-  = render 'post_form'
+  = render partial: 'post_form', locals: {user: current_user, post: current_user.posts.build}
 
 %ul
   - @posts.each do |post|

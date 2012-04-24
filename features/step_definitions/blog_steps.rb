@@ -29,10 +29,12 @@ end
  fill_in(field, with: value)
 end
 
-Given /^ユーザ"([^"]*)"でログインしている$/ do |user|
+Given /^ユーザ"([^"]*)"で会員登録する$/ do |user|
   step %["トップ"ページを表示している]
-  step %["ログイン"リンクをクリックする]
-  step %["email"に"user@example.com"と入力する]
-  step %["password"に"password"と入力する]
-  step %["ログイン"ボタンをクリックする]
+  step %["ブログを始める"リンクをクリックする]
+  step %["user[name]"に"akiinyo"と入力する]
+  step %["user[email]"に"akiinyo@example.com"と入力する]
+  step %["user[password]"に"password"と入力する]
+  step %["user[password_confirmation]"に"password"と入力する]
+  step %["登録する"ボタンをクリックする]
 end
