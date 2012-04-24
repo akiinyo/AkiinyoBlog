@@ -1,0 +1,11 @@
+%h1 ◯◯◯◯
+%p Powered by Akiinyo
+
+%ul
+  = render 'post_form'
+
+%ul
+  - @posts.each do |post|
+    %li
+      = post.title
+      = post.body

@@ -1,0 +1,14 @@
+%h1 ログイン
+
+= form_tag sessions_path do
+  = label_tag 'メールアドレス'
+  = text_field_tag :email
+
+  = label_tag 'パスワード'
+  = password_field_tag :password
+
+  = submit_tag 'ログイン'
+
+%p
+  新規登録
+  = link_to '登録する', '#'
