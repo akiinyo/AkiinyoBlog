@@ -36,4 +36,8 @@ module SessionsHelper
     remember_token = session[:remember_token]
     User.find_by_remember_token(remember_token) unless remember_token.nil?
   end
+
+  def clear_return_to
+    session.delete(:return_to)
+  end
 end
