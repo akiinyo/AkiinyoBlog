@@ -13,6 +13,18 @@ Then /^"([^"]*)"と表示されていること$/ do |text|
   end
 end
 
+When /^"([^"]*)"ボタンをクリックする$/ do |button|
+  click_button(button)
+end
+
 When /^"([^"]*)"リンクをクリックする$/ do |link|
   click_link(link)
+end
+
+Given /^ユーザー"([^"]*)"が登録されている$/ do |user|
+  FactoryGirl.create(user.intern)
+end
+
+もし /^"([^"]*)"に"([^"]*)"と入力する$/ do |field, value|
+ fill_in(field, with: value)
 end
