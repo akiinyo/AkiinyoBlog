@@ -21,10 +21,18 @@ When /^"([^"]*)"リンクをクリックする$/ do |link|
   click_link(link)
 end
 
-Given /^ユーザー"([^"]*)"が登録されている$/ do |user|
+Given /^ユーザ"([^"]*)"が登録されている$/ do |user|
   FactoryGirl.create(user.intern)
 end
 
 もし /^"([^"]*)"に"([^"]*)"と入力する$/ do |field, value|
  fill_in(field, with: value)
+end
+
+Given /^ユーザ"([^"]*)"でログインしている$/ do |user|
+  step %["トップ"ページを表示している]
+  step %["ログイン"リンクをクリックする]
+  step %["email"に"user@example.com"と入力する]
+  step %["password"に"password"と入力する]
+  step %["ログイン"ボタンをクリックする]
 end
