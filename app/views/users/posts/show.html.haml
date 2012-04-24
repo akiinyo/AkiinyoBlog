@@ -2,3 +2,18 @@
   = @post.title
 %div
   = @post.body
+
+%div
+  コメント
+  - @post.comments.each do |comment|
+    = comment.name
+    = comment.body
+
+  = form_for [@post.user, @post, @comment] do |f|
+    = f.label '名前'
+    = f.text_field :name
+
+    = f.label '本文'
+    = f.text_area :body
+
+    = f.submit '投稿する'
