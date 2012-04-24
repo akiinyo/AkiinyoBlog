@@ -5,7 +5,8 @@ AkiinyoBlog::Application.routes.draw do
   match '/signin', to: 'sessions#new'
   match '/signout', to: 'sessions#destroy', via: :delete
 
-  resources :posts
-  resources :users
+  resources :users do
+    resources :posts, controller: 'users/posts'
+  end
   resources :sessions, only:[:new, :create, :destroy]
 end
