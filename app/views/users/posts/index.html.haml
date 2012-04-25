@@ -3,7 +3,7 @@
     = "#{@user.name}さんのブログ"
   - else
     = "#{@user.profiles.first.blog_title}"
-%p
+%p.center
   Powered by
   = image_tag '/images/sakusaku.jpeg', alt: 'akiinyo', width: 50, height: 50
   Akiinyo
@@ -11,12 +11,12 @@
 - if current_user?(@user)
   %div
     = render partial: 'post_form', locals: {user: current_user, post: current_user.posts.build}
-.row
-  .span11
-    %ol.posts
-      - @posts.each do |post|
-        %li
-          %span.title= post.title
-          %span.time= post.created_at
-          %span.body= simple_format post.body
-          %span.comment= link_to 'コメント', [@user, post]
+
+.span8.offset2
+  %ol.posts
+    - @posts.each do |post|
+      %li
+        %span.time.pull-right= post.created_at
+        %span.title= post.title
+        %span.body= simple_format post.body
+        %span.comment= link_to "コメント(#{post.comments.count})", [@user, post]

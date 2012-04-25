@@ -1,10 +1,11 @@
 %h1 ログイン
 
-= form_tag sessions_path do
-  = label_tag 'メールアドレス'
-  = text_field_tag :email
+.span8.offset2
+  = form_tag sessions_path do
+    = label_tag 'メールアドレス'
+    = text_field_tag :email
 
-  = label_tag 'パスワード'
-  = password_field_tag :password
+    = label_tag 'パスワード'
+    = password_field_tag :password
 
-  = submit_tag 'ログイン', class:"btn btn-small btn-primary"
+    = submit_tag 'ログイン', class:"btn btn-small btn-primary"

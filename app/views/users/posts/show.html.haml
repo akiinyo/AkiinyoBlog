@@ -1,27 +1,36 @@
-%h1
-  = @post.title
-%div
-  = @post.body
-  - if current_user?(@post.user)
-    = link_to '編集', edit_user_post_path(current_user)
-    = link_to '削除', [current_user, @post], method: 'DELETE', confirm: '削除しますか？'
+.span8.offset2
+  %h1
+    = @post.title
+  %div
+    = @post.body
+    - if current_user?(@post.user)
+      .pull-right
+        = link_to '編集', edit_user_post_path(current_user)
+        = link_to '削除', [current_user, @post], method: 'DELETE', confirm: '削除しますか？'
 
-%h2 コメント
-%div
-  - if @post.comments.count == 0
-    コメントはありません。
-  - else
-    - @post.comments.each do |comment|
-      = comment.name
-      = comment.body
-      - if current_user?(@post.user)
-        = link_to '削除', [current_user, @post, comment], method: 'DELETE', confirm: '削除しますか？'
+  .border
 
-  = form_for [@post.user, @post, @comment] do |f|
-    = f.label '名前'
-    = f.text_field :name
+  %h2 コメント
+  %div
+    - if @post.comments.count == 0
+      コメントはありません。
+    - else
+      %ol.comments
+        - @post.comments.each do |comment|
+          %li
+            = comment.name
+            = comment.created_at
+            - if current_user?(@post.user)
+              .pull-right
+                = link_to '削除', [current_user, @post, comment], method: 'DELETE', confirm: '削除しますか？'
+            %span.body= comment.body
 
-    = f.label '本文'
-    = f.text_area :body
 
-    = f.submit '投稿する', class:"btn btn-small btn-primary"
+    = form_for [@post.user, @post, @comment] do |f|
+      = f.label '名前'
+      = f.text_field :name
+
+      = f.label '本文'
+      = f.text_area :body
+
+      = f.submit '投稿する', class:"btn btn-small btn-primary"

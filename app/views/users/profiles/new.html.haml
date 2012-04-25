@@ -1,10 +1,11 @@
 %h1 設定
 
-= form_for [current_user, @profile] do |f|
-  = f.label 'ブログ名'
-  = f.text_field :blog_title
+.span8.offset2
+  = form_for [current_user, @profile] do |f|
+    = f.label 'ブログ名'
+    = f.text_field :blog_title
 
-  = f.label '紹介文'
-  = f.text_area :message
+    = f.label '紹介文'
+    = f.text_area :message
 
-  = f.submit "登録する", class: "btn btn-small btn-primary"
+    = f.submit "登録する", class: "btn btn-small btn-primary"

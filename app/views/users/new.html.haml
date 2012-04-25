@@ -1,16 +1,17 @@
 %h1 会員登録
 
-= form_for(@user) do |f|
-  = f.label '名前'
-  = f.text_field :name
+.span8.offset2
+  = form_for(@user) do |f|
+    = f.label '名前'
+    = f.text_field :name
 
-  = f.label 'メールアドレス'
-  = f.text_field :email
+    = f.label 'メールアドレス'
+    = f.text_field :email
 
-  = f.label 'パスワード'
-  = f.password_field :password
+    = f.label 'パスワード'
+    = f.password_field :password
 
-  = f.label '確認用パスワード'
-  = f.password_field :password_confirmation
+    = f.label '確認用パスワード'
+    = f.password_field :password_confirmation
 
-  = f.submit "登録する", class: "btn btn-small btn-primary"
+    = f.submit "登録する", class: "btn btn-small btn-primary"
