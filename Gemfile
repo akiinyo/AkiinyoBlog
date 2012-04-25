@@ -11,6 +11,7 @@ gem 'bcrypt-ruby'
 group :development, :test do
   gem 'sqlite3'
   gem 'i18n_generators'
+  gem 'rails-footnotes', '>= 3.7.5.rc4'
 end
 
 # Gems used only for assets and not required
