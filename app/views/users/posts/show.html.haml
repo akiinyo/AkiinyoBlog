@@ -2,9 +2,12 @@
   = @post.title
 %div
   = @post.body
+  - if current_user?(@post.user)
+    = link_to '編集', edit_user_post_path(current_user)
+    = link_to '削除', [current_user, @post], method: "DELETE", confirm: '削除しますか？'
 
+%h2 コメント
 %div
-  コメント
   - @post.comments.each do |comment|
     = comment.name
     = comment.body

@@ -1,0 +1,8 @@
+= form_for [@post.user, @post], url: {action: :update} do |f|
+  = f.label 'タイトル'
+  = f.text_field :title
+
+  = f.label '本文'
+  = f.text_area :body
+
+  = f.submit '投稿する', class:"btn btn-small btn-primary"
