@@ -1,4 +1,8 @@
-%h1 ブログタイトル
+%h1
+  - if @user.profiles.blank?
+    = "#{@user.name}さんのブログ"
+  - else
+    = "#{@user.profiles.first.blog_title}"
 %p
   Powered by
   = image_tag '/images/sakusaku.jpeg', alt: 'akiinyo', width: 50, height: 50

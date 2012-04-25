@@ -2,4 +2,5 @@
   = @user.name
 
 %div
-  = link_to 'ブログをかく', user_posts_path(@user)
+  = link_to 'ブログをかく', user_posts_path(current_user)
+  = link_to 'ブログ設定', new_user_profile_path(current_user)
