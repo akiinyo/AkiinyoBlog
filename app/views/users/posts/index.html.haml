@@ -8,15 +8,15 @@
   = image_tag '/images/sakusaku.jpeg', alt: 'akiinyo', width: 50, height: 50
   Akiinyo
 
-%ul
-  = render partial: 'post_form', locals: {user: current_user, post: current_user.posts.build}
-
-%ol.posts
-  - @posts.each do |post|
-    %li
-      %span.title
-        = post.title
-      %span.body
-        = post.body
-      %span.comment
-        = link_to 'コメント', [@user, post]
+- if current_user?(@user)
+  %div
+    = render partial: 'post_form', locals: {user: current_user, post: current_user.posts.build}
+.row
+  .span11
+    %ol.posts
+      - @posts.each do |post|
+        %li
+          %span.title= post.title
+          %span.time= post.created_at
+          %span.body= simple_format post.body
+          %span.comment= link_to 'コメント', [@user, post]

@@ -8,6 +8,12 @@ class Users::Posts::CommentsController < ApplicationController
     end
   end
 
+  def destroy
+    @comment = Comment.find(params[:id])
+    @comment.destroy
+    redirect_to [@post.user, @post]
+  end
+
   def load_post
     @post = Post.find(params[:post_id])
   end

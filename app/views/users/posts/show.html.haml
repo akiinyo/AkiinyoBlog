@@ -4,13 +4,18 @@
   = @post.body
   - if current_user?(@post.user)
     = link_to '編集', edit_user_post_path(current_user)
-    = link_to '削除', [current_user, @post], method: "DELETE", confirm: '削除しますか？'
+    = link_to '削除', [current_user, @post], method: 'DELETE', confirm: '削除しますか？'
 
 %h2 コメント
 %div
-  - @post.comments.each do |comment|
-    = comment.name
-    = comment.body
+  - if @post.comments.count == 0
+    コメントはありません。
+  - else
+    - @post.comments.each do |comment|
+      = comment.name
+      = comment.body
+      - if current_user?(@post.user)
+        = link_to '削除', [current_user, @post, comment], method: 'DELETE', confirm: '削除しますか？'
 
   = form_for [@post.user, @post, @comment] do |f|
     = f.label '名前'
