@@ -6,7 +6,7 @@ class Users::ProfilesController < ApplicationController
   def create
     @profile = current_user.profiles.build(params[:profile])
     if @profile.save
-      redirect_to user_url(current_user)
+      redirect_to user_posts_url(current_user)
     end
   end
 end
