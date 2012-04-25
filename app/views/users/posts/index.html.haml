@@ -1,12 +1,18 @@
-%h1 ◯◯◯◯
-%p Powered by Akiinyo
+%h1 ブログタイトル
+%p
+  Powered by
+  = image_tag '/images/sakusaku.jpeg', alt: 'akiinyo', width: 50, height: 50
+  Akiinyo
 
 %ul
   = render partial: 'post_form', locals: {user: current_user, post: current_user.posts.build}
 
-%ul
+%ol.posts
   - @posts.each do |post|
     %li
-      = post.title
-      = post.body
-      = link_to 'コメント', [@user, post]
+      %span.title
+        = post.title
+      %span.body
+        = post.body
+      %span.comment
+        = link_to 'コメント', [@user, post]

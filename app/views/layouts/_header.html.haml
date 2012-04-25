@@ -1,9 +1,10 @@
-%header
-  %div
-    - if signed_in?
-      = link_to 'ログアウト', signout_path, method: 'delete'
-      = link_to 'ブログトップ', user_posts_path(current_user)
-      = link_to 'マイページ', user_path(current_user)
-    - else
-      = link_to 'ログイン', signin_path
-
+%header.navbar.navbar-fixed-top
+  %div.navbar-inner
+    %div.container
+      %ul.nav.pull-right
+        - if signed_in?
+          %li= link_to 'ログアウト', signout_path, method: 'delete'
+          %li= link_to 'ブログトップ', user_posts_path(current_user)
+          %li= link_to 'マイページ', user_path(current_user)
+        - else
+          %li= link_to 'ログイン', signin_path
