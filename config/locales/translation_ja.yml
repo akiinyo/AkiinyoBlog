@@ -1,0 +1,32 @@
+ja:
+  activerecord:
+    models:
+      comment: コメント  #g
+      post: ポスト  #g
+      profile: プロフィール  #g
+      user: ユーザー  #g
+
+    attributes:
+      comment:
+        body: ボディ  #g
+        name: 名前  #g
+        post: :activerecord.models.post  #g
+
+      post:
+        body: ボディ  #g
+        comments: コメント  #g
+        title: title  #g
+        user: :activerecord.models.user  #g
+
+      profile:
+        blog_title: ブログのタイトル  #g
+        message: メッセージ  #g
+        profile: :activerecord.models.profile  #g
+
+      user:
+        email: 電子メール  #g
+        name: 名前  #g
+        password_digest: パスワードダイジェスト  #g
+        posts: ポスト  #g
+        profiles: プロフィール  #g
+        remember_token: トークンを覚えなさい  #g

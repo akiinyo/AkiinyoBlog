@@ -10,6 +10,7 @@ gem 'bcrypt-ruby'
 
 group :development, :test do
   gem 'sqlite3'
+  gem 'i18n_generators'
 end
 
 # Gems used only for assets and not required
