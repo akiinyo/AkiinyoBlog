@@ -5,8 +5,8 @@ class Users::PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
-    @comment = @post.comments.build(params[:comment])
+    user = User.find(params[:user_id])
+    @post = user.posts.find(params[:id])
   end
 
   def create
@@ -17,7 +17,7 @@ class Users::PostsController < ApplicationController
   end
 
   def edit
-    @post = Post.find(params[:id])
+    @post = current_user.posts.find(params[:id])
   end
 
   def update

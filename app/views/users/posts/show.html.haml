@@ -3,30 +3,34 @@
     = @post.title
   %div
     = @post.body
-    - if current_user?(@post.user)
-      .pull-right
-        = link_to '編集', edit_user_post_path(current_user)
-        = link_to '削除', [current_user, @post], method: 'DELETE', confirm: '削除しますか？'
+    - @post.user.buttons.each do |button|
+      = link_to "#{button.kind}", user_button_puts_path, method: 'POST', class: 'btn btn-mini'
+      - if button.puts.present?
+        = "#{button.puts.count}人が#{button.kind}と言っています"
+      - if current_user?(@post.user)
+        .pull-right
+          = link_to '編集', edit_user_post_path(current_user)
+          = link_to '削除', [current_user, @post], method: 'DELETE', confirm: '削除しますか？'
 
   .border
 
   %h2 コメント
   %div
-    - if @post.comments.count == 0
+    - if @post.comments.empty?
       コメントはありません。
     - else
       %ol.comments
         - @post.comments.each do |comment|
           %li
             = comment.name
-            = comment.created_at
+            =l comment.created_at
             - if current_user?(@post.user)
               .pull-right
                 = link_to '削除', [current_user, @post, comment], method: 'DELETE', confirm: '削除しますか？'
             %span.body= comment.body
 
 
-    = form_for [@post.user, @post, @comment] do |f|
+    = form_for [@post.user, @post, @post.comments.build] do |f|
       = f.label '名前'
       = f.text_field :name
 

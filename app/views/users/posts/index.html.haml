@@ -16,7 +16,7 @@
   %ol.posts
     - @posts.each do |post|
       %li
-        %span.time.pull-right= post.created_at
-        %span.title= post.title
+        %span.time.pull-right=l post.created_at
+        %span.title= link_to "#{post.title}", [@user, post]
         %span.body= simple_format post.body
         %span.comment= link_to "コメント(#{post.comments.count})", [@user, post]
