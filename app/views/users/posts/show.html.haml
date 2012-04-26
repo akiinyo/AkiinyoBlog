@@ -3,14 +3,13 @@
     = @post.title
   %div
     = @post.body
+    .pull-right
+      = link_to '編集', edit_user_post_path(current_user)
+      = link_to '削除', [current_user, @post], method: 'DELETE', confirm: '削除しますか？'
     - @post.user.buttons.each do |button|
-      = link_to "#{button.kind}", user_button_puts_path, method: 'POST', class: 'btn btn-mini'
-      - if button.puts.present?
-        = "#{button.puts.count}人が#{button.kind}と言っています"
-      - if current_user?(@post.user)
-        .pull-right
-          = link_to '編集', edit_user_post_path(current_user)
-          = link_to '削除', [current_user, @post], method: 'DELETE', confirm: '削除しますか？'
+      = link_to "#{button.kind}", user_button_puts_path(@post.user, button, {post_id: @post.id}), method: 'POST', class: 'btn btn-mini'
+
+    //ToDo ボタンを押された数を表示する
 
   .border
 
