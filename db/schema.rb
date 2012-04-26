@@ -11,7 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120425011624) do
+ActiveRecord::Schema.define(:version => 20120426013119) do
+
+  create_table "buttons", :force => true do |t|
+    t.integer  "user_id",    :null => false
+    t.string   "kind",       :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "comments", :force => true do |t|
     t.integer  "post_id",    :null => false
@@ -33,6 +40,12 @@ ActiveRecord::Schema.define(:version => 20120425011624) do
     t.integer  "user_id",    :null => false
     t.string   "blog_title"
     t.string   "message"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "puts", :force => true do |t|
+    t.integer  "button_id",  :null => false
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
