@@ -17,4 +17,13 @@ FactoryGirl.define do
     name 'user_name'
     body 'comment'
   end
+
+  factory :button do
+    user
+    kind 'like'
+  end
+
+  factory :put do
+    button
+  end
 end
