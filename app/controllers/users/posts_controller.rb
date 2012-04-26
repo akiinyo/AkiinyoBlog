@@ -9,10 +9,14 @@ class Users::PostsController < ApplicationController
     @post = user.posts.find(params[:id])
   end
 
+  def new
+    @user = User.find(params[:user_id])
+  end
+
   def create
     @post = current_user.posts.build(params[:post])
     if @post.save!
-      redirect_to user_posts_url(current_user)
+      redirect_to user_post_url(current_user, @post)
     end
   end
 
