@@ -29,4 +29,6 @@ ja:
         password_digest: パスワードダイジェスト  #g
         posts: ポスト  #g
         profiles: プロフィール  #g
-        remember_token: トークンを覚えなさい  #g
+        remember_token: リメンバートークン  #g
+        password: パスワード
+        password_confirmation: 確認用パスワード
