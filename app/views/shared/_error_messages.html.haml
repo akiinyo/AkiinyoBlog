@@ -1,0 +1,9 @@
+- if object.errors.any?
+  %div#error_explanation
+    %div.alert.alert-error
+      フォームに誤りがあります。
+
+    %ul
+      - object.errors.full_messages.each do |msg|
+        %li
+          = msg

@@ -4,9 +4,10 @@
   %div
     %span.pull-right=l @post.created_at
     %span.body= simple_format @post.body
-    .pull-right
-      = link_to '編集', edit_user_post_path(current_user)
-      = link_to '削除', [current_user, @post], method: 'DELETE', confirm: '削除しますか？'
+    - if current_user?(@post.user)
+      .pull-right
+        = link_to '編集', edit_user_post_path(current_user)
+        = link_to '削除', [current_user, @post], method: 'DELETE', confirm: '削除しますか？'
 
     %br
 

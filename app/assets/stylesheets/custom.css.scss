@@ -18,6 +18,11 @@ textarea {
   resize: vertical;
 }
 
+.hint {
+  text-align: center;
+  color: red;
+}
+
 .center {
   text-align: center;
   h1 {
@@ -91,3 +96,18 @@ input, textarea, select, .uneditable-input {
   @include box_sizing;
 }
 
+/* buttons */
+
+.buttons {
+  list-style: none;
+  margin: 10px 0 20px 0;
+  li {
+    padding: 10px 30px;
+    border-bottom: 1px solid #e8e8e8;
+    span {
+      display: block;
+      margin-bottom: 3px;
+      line-height: 1;
+    }
+  }
+}
