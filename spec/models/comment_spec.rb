@@ -3,14 +3,11 @@ require 'spec_helper'
 
 describe Comment do
 
-  before do
-    @user = User.new(name:'akiinyo', email:'akiinyo@example.com', password:'hogehoge', password_confirmation:'hogehoge')
-  end
+  let!(:user) { FactoryGirl.create(:user) }
 
   describe "コメントを投稿する" do
-    before { @user.save }
     let!(:post) do
-      FactoryGirl.create(:post, user: @user)
+      FactoryGirl.create(:post, user: user)
     end
     let!(:comment) do
       FactoryGirl.create(:comment, post: post)
@@ -21,5 +18,3 @@ describe Comment do
     end
   end
 end
-
-
