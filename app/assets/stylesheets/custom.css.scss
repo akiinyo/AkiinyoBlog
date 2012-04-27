@@ -18,6 +18,11 @@ textarea {
   resize: vertical;
 }
 
+.hint {
+  text-align: center;
+  color: red;
+}
+
 .center {
   text-align: center;
   h1 {
@@ -33,6 +38,7 @@ textarea {
 h1 {
   font-size: 3em;
   letter-spacing: -2px;
+  margin-top: 20px;
   margin-bottom: 30px;
   text-align: center;
 }
@@ -41,7 +47,12 @@ h1 {
 .comments, .posts {
   list-style: none;
   margin: 10px 0 0 0;
-
+  h1 {
+    font-size: 2em;
+    letter-spacing: -2px;
+    margin-bottom: 30px;
+    text-align: center;
+  }
   li {
     padding: 10px 30px;
     border-top: 1px solid #e8e8e8;
@@ -53,7 +64,24 @@ h1 {
   }
 }
 
+.post {
+  h1 {
+    font-size: 2em;
+    letter-spacing: -2px;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    text-align: center;
+  }
+  span {
+    display: block;
+    margin-bottom: 3px;
+    line-height: 1;
+    font-size: 15px;
+  }
+}
+
 .title {
+  font-size: 18px;
   font-weight:bolder;
 }
 
@@ -68,3 +96,18 @@ input, textarea, select, .uneditable-input {
   @include box_sizing;
 }
 
+/* buttons */
+
+.buttons {
+  list-style: none;
+  margin: 10px 0 20px 0;
+  li {
+    padding: 10px 30px;
+    border-bottom: 1px solid #e8e8e8;
+    span {
+      display: block;
+      margin-bottom: 3px;
+      line-height: 1;
+    }
+  }
+}

@@ -8,15 +8,14 @@
   = image_tag '/images/sakusaku.jpeg', alt: 'akiinyo', width: 50, height: 50
   Akiinyo
 
-- if current_user?(@user)
-  %div
-    = render partial: 'post_form', locals: {user: current_user, post: current_user.posts.build}
-
 .span8.offset2
   %ol.posts
+    - if current_user?(@user)
+      = link_to 'ブログをかく', new_user_post_path(current_user)
     - @posts.each do |post|
       %li
         %span.time.pull-right=l post.created_at
         %span.title= link_to "#{post.title}", [@user, post]
+        %br
         %span.body= simple_format post.body
         %span.comment= link_to "コメント(#{post.comments.count})", [@user, post]

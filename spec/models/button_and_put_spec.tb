@@ -1,0 +1,30 @@
+#coding: utf-8
+require 'spec_helper'
+
+describe Button do
+
+  let!(:user) { FactoryGirl.create(:user) }
+
+  describe "ボタンを設置する" do
+    let!(:button) do
+      FactoryGirl.create(:button, user: user)
+    end
+
+    it "1個のButtonができていること" do
+      user.buttons.should have(1).items
+    end
+  end
+
+  describe "ボタンをクリックする" do
+    let!(:button) do
+      FactoryGirl.create(:button, user: user)
+    end
+    let!(:put) do
+      FactoryGirl.create(:put, button: button)
+    end
+
+    it "1個のPutができていること" do
+      button.puts.should have(1).items
+    end
+  end
+end

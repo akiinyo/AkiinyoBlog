@@ -10,4 +10,11 @@ class Users::ButtonsController < ApplicationController
       redirect_to :back
     end
   end
+
+  def destroy
+    user = User.find(params[:user_id])
+    @button = user.buttons.find(params[:id])
+    @button.destroy
+    redirect_to :back
+  end
 end
