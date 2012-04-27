@@ -5,7 +5,7 @@ class Users::Buttons::PutsController < ApplicationController
     put = button.puts.build
     put.post = post
     if put.save
-      redirect_to user_post_url(post.user, post)
+      redirect_to :back
     end
   end
 end

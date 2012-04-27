@@ -18,6 +18,10 @@
         %span.title= link_to "#{post.title}", [@user, post]
         %br
         %span.body= simple_format post.body
+        - post.user.buttons.each do |button|
+          - puts = post.puts.where(button_id: button.id)
+          .pull-right
+            = link_to "#{button.kind}( #{ puts.count} )", user_button_puts_path(post.user, button, {post_id: post.id}), method: 'POST', class: 'btn btn-mini'
         %span.comment= link_to "コメント(#{post.comments.count})", [@user, post]
 
 .span3.profile
