@@ -8,7 +8,7 @@
   = image_tag '/images/sakusaku.jpeg', alt: 'akiinyo', width: 50, height: 50
   Akiinyo
 
-.span8.offset2
+.span8.offset1
   %ol.posts
     - if current_user?(@user)
       = link_to 'ブログをかく', new_user_post_path(current_user)
@@ -19,3 +19,11 @@
         %br
         %span.body= simple_format post.body
         %span.comment= link_to "コメント(#{post.comments.count})", [@user, post]
+
+.span3.profile
+  .center
+    プロフィール
+    %li= gravatar_for(@user)
+    %li= @user.name
+  - if profile = @user.profiles.first
+    %li=simple_format profile.message

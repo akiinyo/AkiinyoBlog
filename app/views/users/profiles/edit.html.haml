@@ -1,4 +1,4 @@
-%h1 設定
+%h1 設定変更
 
 .span8.offset2
 
@@ -6,7 +6,7 @@
     プロフィール画像の設定
     %a{href: 'http://gravatar.com/emails', target: "_blank" }Gravatar
 
-  = form_for [current_user, @user.profiles.build] do |f|
+  = form_for [current_user, @profile], url: {action: :update}  do |f|
     = f.label 'ブログ名'
     = f.text_field :blog_title
 
