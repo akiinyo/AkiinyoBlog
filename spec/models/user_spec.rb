@@ -33,4 +33,19 @@ describe User do
       end
     end
   end
+
+  describe "passwordがない場合" do
+    before { @user.password = @user.password_confirmation = '' }
+    it { should_not be_valid }
+  end
+
+  describe "passwordとpassword_confirmationが不一致の場合" do
+    before { @user.password_confirmation = 'mismatch' }
+    it { should_not be_valid }
+  end
+
+  describe "passwordが短すぎる場合" do
+    before { @user.password = @user.password_confirmation = 'a' * 5 }
+    it { should be_invalid }
+  end
 end

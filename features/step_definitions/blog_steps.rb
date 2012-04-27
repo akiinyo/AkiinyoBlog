@@ -22,7 +22,7 @@ When /^"([^"]*)"リンクをクリックする$/ do |link|
 end
 
 Given /^ユーザ"([^"]*)"が登録されている$/ do |user|
-  FactoryGirl.create(user.intern)
+  User.create!(name: "#{user}", email: "#{user}@example.com", password: 'password', password_confirmation: 'password')
 end
 
 もし /^"([^"]*)"に"([^"]*)"と入力する$/ do |field, value|
@@ -32,9 +32,19 @@ end
 Given /^ユーザ"([^"]*)"で会員登録する$/ do |user|
   step %["トップ"ページを表示している]
   step %["ブログを始める"リンクをクリックする]
-  step %["user[name]"に"akiinyo"と入力する]
-  step %["user[email]"に"akiinyo@example.com"と入力する]
+  step %["user[name]"に"#{user}"と入力する]
+  step %["user[email]"に"#{user}@example.com"と入力する]
   step %["user[password]"に"password"と入力する]
   step %["user[password_confirmation]"に"password"と入力する]
   step %["登録する"ボタンをクリックする]
+end
+
+Given /^投稿されているブログ記事ページを表示している$/ do
+  step %[ユーザ"akiinyo"で会員登録する]
+  step %["トップ"ページを表示している]
+  step %["マイページ"リンクをクリックする]
+  step %["ブログをかく"リンクをクリックする]
+  step %["post[title]"に"タイトル"と入力する]
+  step %["post[body]"に"本文"と入力する]
+  step %["投稿する"ボタンをクリックする]
 end
