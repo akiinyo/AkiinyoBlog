@@ -33,7 +33,7 @@
               - if current_user?(@post.user)
                 .pull-right
                   = link_to '削除', [current_user, @post, comment], method: 'DELETE', confirm: '削除しますか？'
-              %span.body= comment.body
+              %span.body= simple_format comment.body
 
       = form_for [@post.user, @post, @post.comments.build] do |f|
         = f.label '名前'
