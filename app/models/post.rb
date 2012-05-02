@@ -1,5 +1,5 @@
 class Post < ActiveRecord::Base
-  attr_accessible :body, :title
+  attr_accessible :body, :title, :photo
   belongs_to :user
   has_many :comments
   has_many :buttons
@@ -9,4 +9,6 @@ class Post < ActiveRecord::Base
   validates :title, presence: true
 
   default_scope order: 'posts.created_at DESC'
+
+  mount_uploader :photo, PhotoUploader
 end

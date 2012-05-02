@@ -3,6 +3,7 @@
     = @post.title
   %div
     %span.pull-right=l @post.created_at
+    %span.photo= image_tag(@post.photo_url) if @post.photo?
     %span.body= simple_format @post.body
     - if current_user?(@post.user)
       .pull-right
