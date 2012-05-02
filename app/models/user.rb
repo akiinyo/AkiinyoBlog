@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   has_secure_password
 
   has_many :posts
-  has_many :profiles
+  has_one :profile
   has_many :buttons
 
   before_save { |user| user.email = email.downcase }

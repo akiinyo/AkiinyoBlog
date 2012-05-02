@@ -1,8 +1,8 @@
 %h1
-  - if @user.profiles.blank?
-    = "#{@user.name}さんのブログ"
+  - if @user.profile
+    = "#{@user.profile.blog_title}"
   - else
-    = "#{@user.profiles.first.blog_title}"
+    = "#{@user.name}さんのブログ"
 %p.center
   Powered by
   = image_tag '/images/sakusaku.jpeg', alt: 'akiinyo', width: 50, height: 50
@@ -29,5 +29,5 @@
     プロフィール
     %li= gravatar_for(@user)
     %li= @user.name
-  - if profile = @user.profiles.first
+  - if profile = @user.profile
     %li=simple_format profile.message

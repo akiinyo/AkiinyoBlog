@@ -4,7 +4,7 @@
 
   %div.span8.offset2
     = link_to 'ブログをかく', new_user_post_path(current_user), class: 'btn btn-large btn-primary'
-    - if @user.profiles.present?
+    - if @user.profile
       = link_to 'ブログ設定', edit_user_profile_path(current_user), class: 'btn btn-large btn-primary'
     - else
       = link_to 'ブログ設定', new_user_profile_path(current_user), class: 'btn btn-large btn-primary'
