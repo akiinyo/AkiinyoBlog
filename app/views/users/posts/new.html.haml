@@ -1,6 +1,6 @@
 %div
 .span8.offset2
-  = form_for [current_user, current_user.posts.build] do |f|
+  = form_for [current_user, current_user.posts.build], html: {multipart: true} do |f|
     = f.label 'タイトル'
     = f.text_field :title
 
