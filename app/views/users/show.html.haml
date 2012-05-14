@@ -8,6 +8,6 @@
       = link_to 'ブログ設定', edit_user_profile_path(current_user), class: 'btn btn-large btn-primary'
     - else
       = link_to 'ブログ設定', new_user_profile_path(current_user), class: 'btn btn-large btn-primary'
-    = link_to 'ボタン設置', new_user_button_path(current_user), class: 'btn btn-large btn-primary'
+    = link_to 'ボタン設置', user_buttons_path(current_user), class: 'btn btn-large btn-primary'
 - else
   .center= link_to 'マイページ', user_path(current_user), class: 'btn btn-large btn-primary'
