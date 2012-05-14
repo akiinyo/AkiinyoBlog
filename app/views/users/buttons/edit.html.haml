@@ -1,0 +1,7 @@
+%h1 ボタン編集
+.span6.offset3
+  = form_for [@button.user, @button], url: {action: :update} do |f|
+    = f.label 'ボタン名'
+    = f.text_field :kind
+
+    = f.submit "登録する", class: "btn btn-small btn-primary"
