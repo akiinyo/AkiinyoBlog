@@ -18,6 +18,10 @@
 
   .border
 
+  = link_to "<<#{@post.previous.title}", user_post_path(@post.user, @post.previous) if @post.previous
+  = link_to '一覧に戻る', user_posts_path(@post.user)
+  = link_to "#{@post.next.title}>>", user_post_path(@post.user, @post.next) if @post.next
+
 .span8.offset2
   .comments
     %h1 コメント
