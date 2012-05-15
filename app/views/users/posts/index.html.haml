@@ -1,13 +1,4 @@
-%h1
-  - if @user.profile
-    = "#{@user.profile.blog_title}"
-  - else
-    = "#{@user.name}さんのブログ"
-%p.center
-  Powered by
-  = image_tag '/images/sakusaku.jpeg', alt: 'akiinyo', width: 50, height: 50
-  Akiinyo
-
+= render partial: 'title', locals: { user: @user }
 .span8.offset1
   %ol.posts
     - if current_user?(@user)
@@ -24,10 +15,4 @@
             = link_to "#{button.kind}( #{ puts.count} )", user_button_puts_path(post.user, button, {post_id: post.id}), method: 'POST', class: 'btn btn-mini'
         %span.comment= link_to "コメント(#{post.comments.count})", [@user, post]
 
-.span3.profile
-  .center
-    プロフィール
-    %li= gravatar_for(@user)
-    %li= @user.name
-  - if profile = @user.profile
-    %li=simple_format profile.message
+= render partial: 'sidebar', locals: { user: @user }
