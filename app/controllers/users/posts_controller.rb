@@ -18,9 +18,12 @@ class Users::PostsController < ApplicationController
 
   def create
     @post = current_user.posts.build(params[:post])
-    if @post.save!
+    if @post.save
       flash[:success] = "投稿しました。"
       redirect_to user_post_url(current_user, @post)
+    else
+      flash[:error] = "タイトルと本文を入力してください。"
+      render 'new'
     end
   end
 

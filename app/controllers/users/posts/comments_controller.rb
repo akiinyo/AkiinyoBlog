@@ -4,9 +4,12 @@ class Users::Posts::CommentsController < ApplicationController
 
   def create
     @comment = @post.comments.build(params[:comment])
-    if @comment.save!
+    if @comment.save
       flash[:success] = "更新しました。"
       redirect_to [@post.user, @post]
+    else
+      flash[:error] = "名前と本文を入力してください。"
+      render template: "users/posts/show"
     end
   end
 

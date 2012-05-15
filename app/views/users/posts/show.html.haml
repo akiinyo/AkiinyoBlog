@@ -6,7 +6,7 @@
     %span.body= simple_format @post.body
     - if current_user?(@post.user)
       .pull-right
-        = link_to '編集', edit_user_post_path(current_user)
+        = link_to '編集', edit_user_post_path(@post.user, @post)
         = link_to '削除', [current_user, @post], method: 'DELETE', confirm: '削除しますか？'
 
     %br
@@ -27,6 +27,7 @@
       - else
         %ol.comment
           - @post.comments.each do |comment|
+            - next if comment.new_record?
             %li
               = comment.name
               =l comment.created_at
