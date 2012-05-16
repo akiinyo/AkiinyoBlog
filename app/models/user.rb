@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   has_many :posts
   has_one :profile
   has_many :buttons
+  has_many :authentications
 
   before_save { |user| user.email = email.downcase }
   before_save :create_remember_token
