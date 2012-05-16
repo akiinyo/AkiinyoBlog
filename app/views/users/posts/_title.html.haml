@@ -1,9 +1,10 @@
-%h1
-  - if user.profile
-    = "#{user.profile.blog_title}"
-  - else
-    = "#{user.name}さんのブログ"
-%p.center
-  Powered by
-  = image_tag '/images/sakusaku.jpeg', alt: 'akiinyo', width: 50, height: 50
-  Akiinyo
+.blog_title
+  %h1
+    - if user.profile
+      = "#{user.profile.blog_title}"
+    - else
+      = "#{user.name}さんのブログ"
+  %p.center
+    Powered by
+    = image_tag '/images/sakusaku.jpeg', alt: 'akiinyo', width: 50, height: 50
+    Akiinyo

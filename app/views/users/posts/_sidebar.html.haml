@@ -1,7 +1,7 @@
-.span3.profile
+.profile.span3
   .center
     プロフィール
     %li= gravatar_for(user)
     %li= user.name
   - if profile = user.profile
-    %li=simple_format profile.message
+    %li=simple_format(profile.message, style: "font-family: serif;")

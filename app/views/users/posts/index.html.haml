@@ -8,7 +8,7 @@
         %span.time.pull-right=l post.created_at
         %span.title= link_to "#{post.title}", [@user, post]
         %br
-        %span.body= simple_format post.body
+        %span.body= simple_format(post.body, style: "font-family: serif;")
         - post.user.buttons.each do |button|
           - puts = post.puts.where(button_id: button.id)
           .pull-right
