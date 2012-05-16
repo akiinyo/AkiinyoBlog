@@ -4,14 +4,13 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by_email(params[:email])
-    if user && user.authenticate(params[:password])
-      sign_in user
-      redirect_back_or user
+    auth = request.env["omniauth.auth"]
+    if signed_in?
+      Authentication.connect(current_user, auth["provider"], auth["uid"])
     else
-      flash.now[:error] = 'メールアドレスまたはパスワードが間違っています。'
-      render 'new'
+      auth = Authentication.find_by_provider_and_uid(auth["provider"], auth["uid"]) || Authentication.create_with_omniauth(auth)
     end
+    redirect_to root_url, notice: "ログインしました。"
   end
 
   def destroy
