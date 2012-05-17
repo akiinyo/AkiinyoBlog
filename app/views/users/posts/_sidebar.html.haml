@@ -1,7 +1,7 @@
 .profile.span3
   .center
     プロフィール
-    %li= gravatar_for(user)
+    %li= image_tag(user.twitter_icon_url, size: "140x140")
     %li= user.name
   - if profile = user.profile
     %li=simple_format(profile.message, style: "font-family: serif;")

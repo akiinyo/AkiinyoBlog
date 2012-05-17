@@ -5,6 +5,8 @@ AkiinyoBlog::Application.routes.draw do
   match '/signin', to: 'sessions#new'
   match '/signout', to: 'sessions#destroy', via: :delete
 
+  match '/auth/:provider/callback' => 'sessions#create'
+
   resources :users, only: [:new, :create, :show] do
     resources :posts, controller: 'users/posts' do
       resources :comments, controller: 'users/posts/comments'

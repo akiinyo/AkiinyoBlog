@@ -1,4 +1,15 @@
-= render partial: 'title', locals: { user: @post.user }
+//= render partial: 'title', locals: { user: @post.user }
+.blog_title
+  %h1
+    - if @post.user.profile
+      = "#{@post.user.profile.blog_title}"
+    - else
+      = "#{@post.user.name}さんのブログ"
+  %p.center
+    Powered by
+    = image_tag '/images/sakusaku.jpeg', alt: 'akiinyo', width: 50, height: 50
+    Akiinyo
+
 .post.span8.offset2
   %h1
     = @post.title

@@ -2,10 +2,6 @@
 
 .span8.offset2
 
-  .pull-right
-    プロフィール画像の設定
-    %a{href: 'http://gravatar.com/emails', target: "_blank" }Gravatar
-
   = form_for [current_user, @user.build_profile] do |f|
     = f.label 'ブログ名'
     = f.text_field :blog_title
