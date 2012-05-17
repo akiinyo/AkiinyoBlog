@@ -3,15 +3,16 @@ class Authentication < ActiveRecord::Base
   belongs_to :user
 
   class << self
-    def connect(current_user, provider, uid)
+    def connect(current_user, provider, uid, image)
       current_user.authentications.create!(provider: provider, uid: uid)
+      current_user.twitter_icon_url = image
     end
 
     def create_with_omniauth(auth)
       create! do |authentication|
         authentication.provider = auth["provider"]
         authentication.uid = auth["uid"]
-        authentication.create_user!(name: auth["user_info"]["name"])
+        authentication.create_user!(name: auth["info"]["nickname"], twitter_icon_url: auth["info"]["image"])
       end
     end
   end

@@ -6,11 +6,12 @@ class SessionsController < ApplicationController
   def create
     auth = request.env["omniauth.auth"]
     if signed_in?
-      Authentication.connect(current_user, auth["provider"], auth["uid"])
+      Authentication.connect(current_user, auth["provider"], auth["uid"], auth["info"]["image"])
     else
-      auth = Authentication.find_by_provider_and_uid(auth["provider"], auth["uid"]) || Authentication.create_with_omniauth(auth)
+      authentication = Authentication.find_by_provider_and_uid(auth["provider"], auth["uid"]) || Authentication.create_with_omniauth(auth)
+      sign_in authentication.user
     end
-    redirect_to root_url, notice: "ログインしました。"
+    redirect_to user_path(current_user), notice: "ログインしました。"
   end
 
   def destroy
