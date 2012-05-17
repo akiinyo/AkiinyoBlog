@@ -6,6 +6,10 @@ Given /^"([^"]*)"ページを表示している$/ do |page_name|
   visit path_to("#{page_name}")
 end
 
+Given /^デバッグ$/ do
+  save_and_open_page
+end
+
 Then /^"([^"]*)"と表示されていること$/ do |text|
   if page.respond_to? :should
     page.should have_content(text)
@@ -37,21 +41,24 @@ When /^"([^"]*)"リンクをクリックする$/ do |link|
 end
 
 Given /^ユーザ"([^"]*)"が登録されている$/ do |user|
-  User.create!(name: "#{user}", email: "#{user}@example.com", password: 'password', password_confirmation: 'password')
+  @user = User.create!(name: user, twitter_icon_url: 'image')
+end
+
+Given /^ユーザ"([^"]*)"でログインしている$/ do |user|
+  step %[ユーザ"#{user}"が登録されている]
+
+  OmniAuth.config.test_mode = true
+  auth = OmniAuth.config.mock_auth[:twitter] = {
+    "provider" => 'twitter',
+    "uid" => '1234567',
+    "info" => {"nickname" => "#{user}"}
+  }
+  @user.authentications.create!(provider: auth["provider"], uid: auth["uid"])
+  visit "/auth/twitter"
 end
 
 もし /^"([^"]*)"に"([^"]*)"と入力する$/ do |field, value|
  fill_in(field, with: value)
-end
-
-Given /^ユーザ"([^"]*)"で会員登録する$/ do |user|
-  step %["トップ"ページを表示している]
-  step %["ブログを始める"リンクをクリックする]
-  step %["user[name]"に"#{user}"と入力する]
-  step %["user[email]"に"#{user}@example.com"と入力する]
-  step %["user[password]"に"password"と入力する]
-  step %["user[password_confirmation]"に"password"と入力する]
-  step %["登録する"ボタンをクリックする]
 end
 
 Given /^投稿されているブログ記事ページを表示している$/ do
@@ -62,7 +69,6 @@ Given /^投稿されているブログ記事ページを表示している$/ do
 end
 
 Given /^"([^"]*)"ボタンが登録されている$/ do |kind|
-  user = User.where(name: 'akiinyo').first
-  button = user.buttons.build(kind: "#{kind}")
-  button.save!
+  user = User.find_by_name('akiinyo')
+  button = user.buttons.create!(kind: kind)
 end

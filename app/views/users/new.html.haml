@@ -1,20 +1,4 @@
-%h1 会員登録
+%h1 ログイン
 
-%p.hint パスワードは6文字以上入力してください。
-
-.span8.offset2
-  = form_for(@user) do |f|
-    = render 'shared/error_messages', object: f.object
-    = f.label '名前'
-    = f.text_field :name
-
-    = f.label 'メールアドレス'
-    = f.text_field :email
-
-    = f.label 'パスワード'
-    = f.password_field :password
-
-    = f.label '確認用パスワード'
-    = f.password_field :password_confirmation
-
-    = f.submit "登録する", class: "btn btn-small btn-primary"
+.center
+  = link_to 'Twitterでログインする', "/auth/twitter"

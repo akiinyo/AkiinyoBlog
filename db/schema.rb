@@ -11,7 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120426101719) do
+ActiveRecord::Schema.define(:version => 20120517052217) do
+
+  create_table "authentications", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "provider"
+    t.string   "uid"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "buttons", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -54,11 +62,10 @@ ActiveRecord::Schema.define(:version => 20120426101719) do
 
   create_table "users", :force => true do |t|
     t.string   "name"
-    t.string   "email",           :null => false
-    t.string   "password_digest"
     t.string   "remember_token"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+    t.string   "twitter_icon_url"
   end
 
 end
