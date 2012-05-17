@@ -9,5 +9,10 @@ describe Hash do
     specify {
       hash.mash['hoge']['fuga'].should == 'piyo'
     }
+
+    specify 'can change destructive!' do
+      hash.mash!
+      hash['hoge']['fuga'].should == 'piyo'
+    end
   end
 end
