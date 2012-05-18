@@ -4,8 +4,11 @@ class Authentication < ActiveRecord::Base
 
   class << self
     def connect(current_user, provider, uid, image)
-      current_user.authentications.create!(provider: provider, uid: uid)
+      if current_user.authentications.where(provider: provider).blank?
+        current_user.authentications.create!(provider: provider, uid: uid)
+      end
       current_user.twitter_icon_url = image
+      current_user.save!
     end
 
     def create_with_omniauth(auth)
