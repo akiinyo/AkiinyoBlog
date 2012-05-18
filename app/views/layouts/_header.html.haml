@@ -7,6 +7,6 @@
           %li= link_to 'ブログトップ', user_posts_path(current_user)
           %li= link_to 'マイページ', user_path(current_user)
         - else
-          //%li= link_to 'ログイン', signin_path
           %li= link_to 'Akiinyoブログ', root_path
-          %li= link_to 'ログイン', "/auth/twitter"
+          %li= link_to 'ログイン', signin_path
+          %li= link_to 'Twitterでログイン', "/auth/twitter"

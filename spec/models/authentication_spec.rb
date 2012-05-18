@@ -44,4 +44,10 @@ describe Authentication do
       authentication.user.name == 'akiinyo'
     end
   end
+
+  describe 'sign in with id and password' do
+    let(:user) { User.create!(name: 'akiinyo', password: 'password')}
+    before do
+    end
+  end
 end
