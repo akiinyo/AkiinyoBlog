@@ -44,6 +44,10 @@ Given /^ユーザ"([^"]*)"が登録されている$/ do |user|
   @user = User.create!(name: user, twitter_icon_url: 'image')
 end
 
+Given /^ユーザ"([^"]*)"がパスワードで登録されている$/ do |user|
+  @user = User.create!(name: user, password: 'password')
+end
+
 Given /^ユーザ"([^"]*)"でログインしている$/ do |user|
   step %[ユーザ"#{user}"が登録されている]
 

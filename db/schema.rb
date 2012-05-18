@@ -66,6 +66,7 @@ ActiveRecord::Schema.define(:version => 20120517052217) do
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
     t.string   "twitter_icon_url"
+    t.string   "password_digest"
   end
 
 end
