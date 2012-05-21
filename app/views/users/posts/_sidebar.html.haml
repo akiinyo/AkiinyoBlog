@@ -1,7 +1,7 @@
 .profile.span3
   .center
     プロフィール
-    %li= image_tag(user.twitter_icon_url, size: "140x140")
+    %li= image_tag(user.twitter_icon_url, size: "128x128")
     %li= user.name
   - if profile = user.profile
     %li=simple_format(profile.message, style: "font-family: serif;")
