@@ -1,10 +1,12 @@
-%div
-.span8.offset2
-  = form_for [current_user, current_user.posts.build] do |f|
-    = f.label 'タイトル'
-    = f.text_field :title
+.new_post
+  %h1 新規投稿
+  %div
+  .span8.offset2
+    = form_for [current_user, current_user.posts.build] do |f|
+      = f.label 'タイトル'
+      = f.text_field :title
 
-    = f.label '本文'
-    = f.text_area :body
+      = f.label '本文'
+      = f.text_area :body
 
-    = f.submit '投稿する', class:"btn btn-small btn-primary"
+      = f.submit '投稿する', class:"btn btn-small btn-primary"
