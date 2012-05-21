@@ -88,6 +88,12 @@ h1, h2, h3, h4, h5, h6 {
 
 .profile {
   list-style: none;
+  h1 {
+    font-size: 3em;
+    letter-spacing: -2px;
+    margin-bottom: 30px;
+    text-align: center;
+  }
   li {
     padding: 10px 30px;
     span {
@@ -134,6 +140,12 @@ input, textarea, select, .uneditable-input {
 .buttons {
   list-style: none;
   margin-bottom: 30px;
+  h1 {
+    font-size: 2em;
+    letter-spacing: -2px;
+    margin-bottom: 30px;
+    text-align: center;
+  }
   li {
     padding: 10px 30px;
     border-bottom: 1px solid #e8e8e8;
