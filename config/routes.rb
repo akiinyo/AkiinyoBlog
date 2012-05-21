@@ -12,7 +12,7 @@ AkiinyoBlog::Application.routes.draw do
     resources :posts, controller: 'users/posts' do
       resources :comments, controller: 'users/posts/comments'
     end
-    resources :profiles, controller: 'users/profiles'
+    resource :profile, controller: 'users/profiles'
     resources :buttons, controller: 'users/buttons' do
       resources :puts, controller: 'users/buttons/puts', only: [:create]
     end

@@ -36,7 +36,7 @@ textarea {
   margin-bottom: 20px;
 }
 
-.blog_title, .my_page, .new_post {
+.blog_title, .my_page, .new_post, .edit_post {
   margin-bottom: 20px;
   h1 {
     font-size: 3em;
@@ -141,7 +141,7 @@ input, textarea, select, .uneditable-input {
   list-style: none;
   margin-bottom: 30px;
   h1 {
-    font-size: 2em;
+    font-size: 3em;
     letter-spacing: -2px;
     margin-bottom: 30px;
     text-align: center;

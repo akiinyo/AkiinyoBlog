@@ -1,8 +1,13 @@
-= form_for [@post.user, @post], url: {action: :update} do |f|
-  = f.label 'タイトル'
-  = f.text_field :title
+- if current_user?(@post.user)
+  .edit_post
+    %h1 記事編集
+  = form_for [@post.user, @post], url: {action: :update} do |f|
+    = f.label 'タイトル'
+    = f.text_field :title
 
-  = f.label '本文'
-  = f.text_area :body
+    = f.label '本文'
+    = f.text_area :body
 
-  = f.submit '投稿する', class:"btn btn-small btn-primary"
+    = f.submit '投稿する', class:"btn btn-small btn-primary"
+- else
+  .center= link_to 'マイページ', user_path(current_user), class: 'btn btn-large btn-primary'
