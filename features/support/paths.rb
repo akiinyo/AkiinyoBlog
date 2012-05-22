@@ -4,7 +4,7 @@ module NavigationHelpers
   def path_to(page_name)
     case page_name
     when "トップ" then root_path
-    when /ユーザ:(\w+)のマイ/ then user_path(User.find_by_name($1))
+    when /ユーザ:(\w+)のマイ/ then my_path
     end
   end
 end

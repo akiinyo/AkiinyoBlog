@@ -1,0 +1,8 @@
+.my_page
+  %h1= current_user.name
+
+%div.span8.offset2
+  = link_to 'ブログをかく', new_my_post_path, class: 'btn btn-large btn-primary'
+  = link_to 'ブログを見る', user_posts_path(current_user), class: 'btn btn-large btn-primary'
+  = link_to 'ブログ設定', new_my_profile_path, class: 'btn btn-large btn-primary'
+  = link_to 'ボタン設置', my_buttons_path, class: 'btn btn-large btn-primary'
