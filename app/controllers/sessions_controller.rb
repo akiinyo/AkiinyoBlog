@@ -40,6 +40,6 @@ class SessionsController < ApplicationController
   end
 
   def sucess!
-    redirect_to user_path(current_user), notice: "ログインしました。"
+    redirect_to my_path, notice: "ログインしました。"
   end
 end
