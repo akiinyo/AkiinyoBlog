@@ -1,4 +1,4 @@
-class Users::Buttons::PutsController < ApplicationController
+class My::Buttons::PutsController < ApplicationController
   def create
     button = Button.find(params[:button_id])
     post = Post.find(params[:post_id])

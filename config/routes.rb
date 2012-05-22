@@ -8,13 +8,17 @@ AkiinyoBlog::Application.routes.draw do
 
   match '/auth/:provider/callback' => 'sessions#create'
 
-  resources :users, only: [:new, :create, :show] do
+  resources :users, only: [:new, :create] do
     resources :posts, controller: 'users/posts' do
       resources :comments, controller: 'users/posts/comments'
     end
-    resource :profile, controller: 'users/profiles'
-    resources :buttons, controller: 'users/buttons' do
-      resources :puts, controller: 'users/buttons/puts', only: [:create]
+  end
+
+  resource :my, controller: :my, only: [:show] do
+    resources :posts, controller: 'my/posts'
+    resource :profile, controller: 'my/profiles'
+    resources :buttons, controller: 'my/buttons' do
+      resources :puts, controller: 'my/buttons/puts', only: [:create]
     end
   end
   resources :sessions, only:[:new, :create, :destroy]

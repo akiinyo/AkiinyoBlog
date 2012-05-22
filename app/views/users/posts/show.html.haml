@@ -18,7 +18,7 @@
     %span.body= simple_format(@post.body, style: "font-family: serif;")
     - if current_user?(@post.user)
       .pull-right
-        = link_to '編集', edit_user_post_path(@post.user, @post)
+        = link_to '編集', edit_my_post_path(@post)
         = link_to '削除', [current_user, @post], method: 'DELETE', confirm: '削除しますか？'
 
     %br
@@ -27,7 +27,7 @@
       - @post.user.buttons.each do |button|
         - puts = @post.puts.where(button_id: button.id)
         .pull-right
-          = link_to "#{button.kind}( #{ puts.count} )", user_button_puts_path(@post.user, button, {post_id: @post.id}), method: 'POST', class: 'btn btn-mini'
+          = link_to "#{button.kind}( #{ puts.count} )", my_button_puts_path(button, {post_id: @post.id}), method: 'POST', class: 'btn btn-mini'
 
   .border
 

@@ -1,14 +1,14 @@
 # coding: utf-8
-class Users::ButtonsController < ApplicationController
+class My::ButtonsController < ApplicationController
   def index
-    @user = User.find(params[:user_id])
     @button = Button.new
   end
 
   def create
     @button = current_user.buttons.build(params[:button])
     if @button.save
-      redirect_to :back
+      flash[:success] = "登録しました。"
+      redirect_to action: :index
     end
   end
 
@@ -21,16 +21,16 @@ class Users::ButtonsController < ApplicationController
     @button = Button.find(params[:id])
     if @button.update_attributes(params[:button])
       flash[:success] = "更新しました。"
-      redirect_to user_buttons_path
+      redirect_to action: :index
     else
      render :edit
     end
   end
 
   def destroy
-    user = User.find(params[:user_id])
-    @button = user.buttons.find(params[:id])
+    @button = current_user.buttons.find(params[:id])
     @button.destroy
+    flash[:success] = "削除しました。"
     redirect_to :back
   end
 end

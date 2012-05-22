@@ -1,15 +1,8 @@
 # coding: utf-8
-class Users::PostsController < ApplicationController
+class My::PostsController < ApplicationController
   before_filter :correct_user,   only: :destroy
 
-  def index
-    @user = User.find(params[:user_id])
-    @posts = @user.posts
-  end
-
-  def show
-    user = User.find(params[:user_id])
-    @post = user.posts.find(params[:id])
+  def new
   end
 
   def create
@@ -23,11 +16,18 @@ class Users::PostsController < ApplicationController
     end
   end
 
-  def destroy
+  def edit
+    @post = current_user.posts.find(params[:id])
+  end
+
+  def update
     @post = Post.find(params[:id])
-    @post.destroy
-    flash[:success] = "削除しました。"
-    redirect_to user_posts_url
+    if @post.update_attributes(params[:post])
+      flash[:success] = "更新しました。"
+      redirect_to user_post_url(current_user)
+    else
+      render :edit
+    end
   end
 
   private
