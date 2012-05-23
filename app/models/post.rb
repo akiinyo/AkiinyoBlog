@@ -9,4 +9,12 @@ class Post < ActiveRecord::Base
   validates :title, presence: true
 
   default_scope order: 'posts.created_at DESC'
+
+  def next
+    user.posts.where('id < ?', id).order('created_at DESC').first
+  end
+
+  def previous
+    user.posts.where('id > ?', id).order('created_at DESC').last
+  end
 end
