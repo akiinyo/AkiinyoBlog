@@ -1,12 +1,25 @@
 = render partial: 'title', locals: { user: @user }
-.span8.offset1
+.span3
+  .resent_article
+    .resent_post
+      %h1 最近の記事
+      - @posts.each do |post|
+        %li=link_to post.title, [@user, post]
+
+    .resent_comment
+      %h1 最近のコメント
+      - @posts.each do |post|
+        - post.comments.limit(5).each do |comment|
+          %li=link_to post.title.truncate(6, omission: '…')+" from " +comment.name, [@user, post]
+
+.span6
   %ol.posts
     - if current_user?(@user)
       = link_to 'ブログをかく', new_my_post_path
     - @posts.each do |post|
       %li
         %span.time.pull-right=l post.created_at
-        %span.title= link_to "#{post.title}", [@user, post]
+        %span.title= link_to post.title, [@user, post]
         %br
         %span.body= simple_format(post.body, style: "font-family: serif;")
         - post.user.buttons.each do |button|

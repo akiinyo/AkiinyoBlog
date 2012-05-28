@@ -36,6 +36,24 @@ textarea {
   margin-bottom: 20px;
 }
 
+.resent_article {
+  .resent_post, .resent_comment {
+    margin-bottom: 30px;
+  }
+  h1 {
+    font-size: 1em;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  li {
+    list-style-type: none;
+    line-height: 1.5;
+    padding: 0 30px;
+    margin-bottom: 5px;
+    text-decoration:underline;
+  }
+}
+
 .blog_title, .my_page, .new_post, .edit_post {
   margin-bottom: 20px;
   h1 {
@@ -43,6 +61,9 @@ textarea {
     letter-spacing: -2px;
     margin-bottom: 30px;
     text-align: center;
+  }
+  p {
+    margin-bottom: 30px;
   }
 }
 
@@ -108,7 +129,7 @@ h1, h2, h3, h4, h5, h6 {
   h1 {
     font-size: 2em;
     letter-spacing: -2px;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
     text-align: center;
   }
   span {
@@ -116,6 +137,31 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom: 3px;
     line-height: 1.5;
     font-size: 16px;
+  }
+  ul {
+    margin: 0 0 50px 0;
+    padding: 0;
+    display: block;
+    position: relative;
+    //text-align: center;
+    li {
+      list-style: none;
+      display: block;
+    }
+    .prev {
+      float: left;
+    }
+    .next {
+      float: right;
+      margin-left: 100px;
+    }
+    .list {
+      margin-left: 100px;
+      margin-right: 100px;
+      position: absolute;
+      width: 56%;
+      text-align: center;
+    }
   }
 }
 

@@ -1,4 +1,4 @@
-- if current_user?(@post.user)
+.span6.offset3
   .edit_post
     %h1 記事編集
   = form_for [@post.user, @post], url: {action: :update} do |f|
@@ -9,5 +9,3 @@
     = f.text_area :body
 
     = f.submit '投稿する', class:"btn btn-small btn-primary"
-- else
-  .center= link_to 'マイページ', user_path(current_user), class: 'btn btn-large btn-primary'

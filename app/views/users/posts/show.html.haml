@@ -10,11 +10,21 @@
     = image_tag '/images/sakusaku.jpeg', alt: 'akiinyo', width: 50, height: 50
     Akiinyo
 
-.post.span8.offset2
-  %h1
-    = @post.title
+.span3.resent_article
+  .resent_post
+    %h1 最近の記事
+    - @post.user.posts.limit(5).each do |post|
+      %li=link_to post.title, [@post.user, post]
+
+  .resent_comment
+    %h1 最近のコメント
+    - @post.user.posts.each do |post|
+      - post.comments.limit(5).each do |comment|
+        %li=link_to post.title.truncate(6, omission: '…')+" from " +comment.name, [@post.user, post]
+
+.post.span6
+  %h1= @post.title
   %div
-    .pull-right=l @post.created_at
     %span.body= simple_format(@post.body, style: "font-family: serif;")
     - if current_user?(@post.user)
       .pull-right
@@ -26,16 +36,19 @@
     .buttons
       - @post.user.buttons.each do |button|
         - puts = @post.puts.where(button_id: button.id)
-        .pull-right
-          = link_to "#{button.kind}( #{ puts.count} )", my_button_puts_path(button, {post_id: @post.id}), method: 'POST', class: 'btn btn-mini'
+        .pull-left=l @post.created_at
+        .pull-right= link_to "#{button.kind}( #{ puts.count} )", my_button_puts_path(button, {post_id: @post.id}), method: 'POST', class: 'btn btn-mini'
 
   .border
 
-  = link_to "<<#{@post.previous.title}", user_post_path(@post.user, @post.previous) if @post.previous
-  = link_to '一覧に戻る', user_posts_path(@post.user)
-  = link_to "#{@post.next.title}>>", user_post_path(@post.user, @post.next) if @post.next
+  %ul
+    %li.prev= link_to "<<#{@post.previous.title.truncate(10, omission: '…')}", user_post_path(@post.user, @post.previous) if @post.previous
+    %li.list= link_to '一覧に戻る', user_posts_path(@post.user)
+    %li.next= link_to "#{@post.next.title.truncate(10, omission: '…')}>>", user_post_path(@post.user, @post.next) if @post.next
 
-.span8.offset2
+= render partial: 'sidebar', locals: { user: @post.user}
+
+.span6
   .comments
     %h1 コメント
     %div

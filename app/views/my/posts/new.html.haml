@@ -1,7 +1,7 @@
 .new_post
   %h1 新規投稿
   %div
-  .span8.offset2
+  .span6.offset3
     = form_for [current_user, current_user.posts.build] do |f|
       = f.label 'タイトル'
       = f.text_field :title
