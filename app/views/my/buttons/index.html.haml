@@ -1,15 +1,27 @@
-.span6.offset3
-  .buttons
-    %h1 ボタン設置
+.my_page
+  .span8.offset2
+    .icon= image_tag(current_user.twitter_icon_url, size: "48x48")
+    %h1= "#{current_user.name}さんのマイページ"
 
-    - current_user.buttons.each do |button|
-      %li
-        .pull-right
-          = link_to '編集', edit_my_button_path(button)
-          = link_to '削除', my_button_path(button), method: 'DELETE', confirm: '削除しますか？'
-        %span= button.kind
+    = link_to 'ブログをかく', new_my_post_path, class: 'btn btn-large btn-primary'
 
-  = form_for [:my, @button] do |f|
-    = f.label 'ボタン名'
-    = f.text_field :kind
-    = f.submit "登録する", class: "btn btn-small btn-primary"
+  .my_nav.span2.offset2
+    %ul
+      %li= link_to '記事一覧', my_path
+      %li= link_to 'ブログを見る', user_posts_path(current_user)
+      %li= link_to 'ブログ設定', new_my_profile_path
+      %li= link_to 'ボタン設置', my_buttons_path
+
+  .span6
+    .buttons
+      - current_user.buttons.each do |button|
+        %li
+          .pull-right
+            = link_to '編集', edit_my_button_path(button)
+            = link_to '削除', my_button_path(button), method: 'DELETE', confirm: '削除しますか？'
+          %span= button.kind
+
+    = form_for [:my, @button] do |f|
+      = f.label 'ボタン名'
+      = f.text_field :kind
+      = f.submit "登録する", class: "btn btn-small btn-primary"

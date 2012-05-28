@@ -1,8 +1,20 @@
 .my_page
-  %h1= current_user.name
+  .span8.offset2
+    .icon= image_tag(current_user.twitter_icon_url, size: "48x48")
+    %h1= "#{current_user.name}さんのマイページ"
 
-%div.span8.offset2
-  = link_to 'ブログをかく', new_my_post_path, class: 'btn btn-large btn-primary'
-  = link_to 'ブログを見る', user_posts_path(current_user), class: 'btn btn-large btn-primary'
-  = link_to 'ブログ設定', new_my_profile_path, class: 'btn btn-large btn-primary'
-  = link_to 'ボタン設置', my_buttons_path, class: 'btn btn-large btn-primary'
+    = link_to 'ブログをかく', new_my_post_path, class: 'btn btn-large btn-primary'
+
+  .my_nav.span2.offset2
+    %ul
+      %li= link_to '記事一覧', my_path
+      %li= link_to 'ブログを見る', user_posts_path(current_user)
+      %li= link_to 'ブログ設定', new_my_profile_path
+      %li= link_to 'ボタン設置', my_buttons_path
+
+  .span6
+    %ul.my_posts
+      - current_user.posts.each do |post|
+        %li
+          .pull-right=l post.created_at
+          = link_to post.title, [current_user, post]
