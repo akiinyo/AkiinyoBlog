@@ -46,31 +46,30 @@
     %li.list= link_to '一覧に戻る', user_posts_path(@post.user)
     %li.next= link_to "#{@post.next.title.truncate(10, omission: '…')}>>", user_post_path(@post.user, @post.next) if @post.next
 
-= render partial: 'sidebar', locals: { user: @post.user}
+= render partial: 'sidebar', locals: { user: @post.user }
 
-.span6
-  .comments
-    %h1 コメント
-    %div
-      - if @post.comments.empty?
-        .center コメントはありません。
-      - else
-        %ol.comment
-          - @post.comments.each do |comment|
-            - next if comment.new_record?
-            %li
-              = comment.name
-              =l comment.created_at
-              - if current_user?(@post.user)
-                .pull-right
-                  = link_to '削除', [current_user, @post, comment], method: 'DELETE', confirm: '削除しますか？'
-              %span.body= simple_format comment.body
+.comments
+  %h1 コメント
+  %div
+    - if @post.comments.empty?
+      .center コメントはありません。
+    - else
+      %ol.comment
+        - @post.comments.each do |comment|
+          - next if comment.new_record?
+          %li
+            = comment.name
+            =l comment.created_at
+            - if current_user?(@post.user)
+              .pull-right
+                = link_to '削除', [current_user, @post, comment], method: 'DELETE', confirm: '削除しますか？'
+            %span.body= simple_format comment.body
 
-      = form_for [@post.user, @post, @post.comments.build] do |f|
-        = f.label '名前'
-        = f.text_field :name
+    = form_for [@post.user, @post, @post.comments.build] do |f|
+      = f.label '名前'
+      = f.text_field :name
 
-        = f.label '本文'
-        = f.text_area :body
+      = f.label '本文'
+      = f.text_area :body
 
-        = f.submit '投稿する', class:"btn btn-small btn-primary"
+      = f.submit '投稿する', class:"btn btn-small btn-primary"

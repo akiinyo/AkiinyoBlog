@@ -88,8 +88,29 @@ h1, h2, h3, h4, h5, h6 {
 
 
 /* posts */
-.comments, .posts {
+.posts {
   list-style: none;
+  h1 {
+    font-size: 2em;
+    letter-spacing: -2px;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+  li {
+    padding: 10px 30px;
+    border-top: 1px solid #e8e8e8;
+    span {
+      display: block;
+      margin-bottom: 3px;
+      line-height: 1.5;
+    }
+  }
+}
+
+.comments {
+  list-style: none;
+  margin-left: 260px;
+  margin-right: 240px;
   h1 {
     font-size: 2em;
     letter-spacing: -2px;
