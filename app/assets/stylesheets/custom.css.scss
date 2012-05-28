@@ -19,11 +19,6 @@ textarea {
   resize: vertical;
 }
 
-.hint {
-  text-align: center;
-  color: red;
-}
-
 .center {
   text-align: center;
   h1 {
@@ -54,7 +49,7 @@ textarea {
   }
 }
 
-.blog_title, .new_post, .edit_post {
+.blog_title {
   margin-bottom: 20px;
   h1 {
     font-size: 3em;
@@ -70,17 +65,29 @@ textarea {
 .my_page {
   margin-bottom: 20px;
   h1 {
-    font-size: 1.5em;
+    font-size: 18px;
     padding-top: 20px;
-    margin-left: 60px;
     margin-bottom: 30px;
+    margin-left: 10px;
+    float: left;
+  }
+  h2 {
+    font-size: 14px;
+    margin-top: 20px;
+    margin-bottom: 10px;
   }
   .icon {
     float: left;
   }
+  .write_button {
+    padding-top: 20px;
+    float: right;
+  }
   .my_posts, .my_profile {
     font-size: 14px;
-    margin-top: 20px;
+    ul {
+      margin-left: 0;
+    }
     li {
       list-style: none;
     }
@@ -95,9 +102,9 @@ textarea {
   li {
     line-height: 1.5;
     list-style: none;
+    text-decoration:underline;
   }
 }
-
 
 .information {
   margin-bottom: 20px;
@@ -236,16 +243,9 @@ input, textarea, select, .uneditable-input {
 
 /* buttons */
 
-.buttons {
+.buttons, .button {
   list-style: none;
-  margin-top: 20px;
   margin-bottom: 30px;
-  h1 {
-    font-size: 3em;
-    letter-spacing: -2px;
-    margin-bottom: 30px;
-    text-align: center;
-  }
   li {
     padding: 10px 30px;
     border-bottom: 1px solid #e8e8e8;

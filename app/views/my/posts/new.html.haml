@@ -1,7 +1,9 @@
-.new_post
-  %h1 新規投稿
-  %div
-  .span6.offset3
+.my_page
+  = render partial: 'my/header'
+  = render partial: 'my/nav'
+
+  .span6
+    %h2 新規投稿
     = form_for [current_user, current_user.posts.build] do |f|
       = f.label 'タイトル'
       = f.text_field :title

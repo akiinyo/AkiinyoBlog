@@ -1,6 +1,9 @@
-.buttons
-  %h1 ボタン編集
-  .span6.offset3
+.my_page
+  = render partial: 'my/header'
+  = render partial: 'my/nav'
+
+  .span6.button
+    %h2 ボタン編集
     = form_for [@button.user, @button], url: {action: :update} do |f|
       = f.label 'ボタン名'
       = f.text_field :kind
