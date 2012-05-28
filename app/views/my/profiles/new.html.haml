@@ -1,7 +1,7 @@
 .profile
   %h1 設定
 
-  .span8.offset2
+  .span6.offset3
 
     = form_for current_user.profile || current_user.build_profile, url: my_profile_path do |f|
       = f.label 'ブログ名'
