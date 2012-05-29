@@ -10,7 +10,7 @@ class Post < ActiveRecord::Base
 
   default_scope order: 'posts.created_at DESC'
 
-  paginates_per 30
+  paginates_per 15
 
   def next
     user.posts.where('id < ?', id).order('created_at DESC').first
