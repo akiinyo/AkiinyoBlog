@@ -4,6 +4,7 @@
   = render partial: 'resent', locals: { user: @user, posts: @posts }
 
 .span6
+  = paginate @posts
   %ol.posts
     - if current_user?(@user)
       = link_to 'ブログをかく', new_my_post_path
@@ -18,5 +19,6 @@
           .pull-right
             = link_to "#{button.kind}( #{ puts.count} )", my_button_puts_path(button, {post_id: post.id}), method: 'POST', class: 'btn btn-mini'
         %span.comment= link_to "コメント(#{post.comments.count})", [@user, post]
+  = paginate @posts
 
 = render partial: 'sidebar', locals: { user: @user }
