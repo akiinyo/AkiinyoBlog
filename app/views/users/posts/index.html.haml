@@ -1,7 +1,7 @@
 = render partial: 'title', locals: { user: @user }
 
 .span3
-  = render partial: 'resent', locals: { user: @user, posts: @posts }
+  = render partial: 'resent', locals: { user: @user, posts: @all_posts }
 
 .span6
   .center= paginate @posts
