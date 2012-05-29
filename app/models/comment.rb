@@ -4,4 +4,6 @@ class Comment < ActiveRecord::Base
 
   validates :body, presence: true
   validates :name, presence: true
+
+  scope :recent_first, order("created_at DESC")
 end

@@ -7,5 +7,5 @@
   .resent_comment
     %h1 最近のコメント
     - posts.each do |post|
-      - post.comments.limit(5).each do |comment|
+      - post.comments.recent_first.limit(5).each do |comment|
         %li=link_to "#{post.title} from #{comment.name}", [user, post]
