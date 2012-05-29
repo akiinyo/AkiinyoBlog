@@ -6,6 +6,7 @@ gem 'haml-rails'
 gem 'bcrypt-ruby'
 gem 'omniauth'
 gem 'omniauth-twitter'
+gem 'kaminari'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
