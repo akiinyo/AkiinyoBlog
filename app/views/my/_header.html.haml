@@ -2,4 +2,5 @@
   .icon= image_tag(current_user.twitter_icon_url, size: "48x48")
   %h1= "#{current_user.name}さんのマイページ"
 
-  .write_button= link_to 'ブログをかく', new_my_post_path, class: 'btn btn-large btn-primary'
+  - unless request.path_info == '/my/posts/new'
+    .write_button= link_to 'ブログをかく', new_my_post_path, class: 'btn btn-large btn-primary'
