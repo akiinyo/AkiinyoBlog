@@ -40,6 +40,14 @@ When /^"([^"]*)"リンクをクリックする$/ do |link|
   click_link(link)
 end
 
+When /^"([^"]*)"をチェックする$/ do |field|
+  check(field)
+end
+
+When /^"([^"]*)"のチェックを外す$/ do |field|
+  uncheck(field)
+end
+
 Given /^ユーザ"([^"]*)"が登録されている$/ do |user|
   @user = User.create!(name: user, twitter_icon_url: 'image')
 end
