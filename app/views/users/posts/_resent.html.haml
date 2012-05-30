@@ -5,7 +5,8 @@
       %li=link_to post.title, [user, post]
 
   .resent_comment
-    %h1 最近のコメント
-    - posts.each do |post|
-      - post.comments.recent_first.limit(10).each do |comment|
-        %li=link_to "#{post.title} from #{comment.name}", [user, post]
+    - if user.receive_comment?
+      %h1 最近のコメント
+      - posts.each do |post|
+        - post.comments.recent_first.limit(10).each do |comment|
+          %li=link_to "#{post.title} from #{comment.name}", [user, post]
