@@ -1,0 +1,14 @@
+.my_page
+  = render partial: 'my/header'
+  = render partial: 'my/nav'
+
+  .span6
+    .my_comments
+      %h2 コメント一覧
+      %ul
+        - @comments.each do |comment|
+          %li
+            .pull-right=l comment.created_at
+            = link_to "#{comment.post.title} from #{comment.name}", [current_user, comment.post]
+      .center= paginate @comments
+

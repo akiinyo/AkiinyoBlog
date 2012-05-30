@@ -83,7 +83,7 @@ textarea {
     padding-top: 20px;
     float: right;
   }
-  .my_posts, .my_profile {
+  .my_posts, .my_profile, .my_comments {
     font-size: 14px;
     ul {
       margin-left: 0;
@@ -138,6 +138,7 @@ h1, h2, h3, h4, h5, h6 {
   li {
     padding: 10px 30px;
     border-top: 1px solid #e8e8e8;
+    overflow: hidden;
     span {
       display: block;
       margin-bottom: 3px;

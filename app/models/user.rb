@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   has_secure_password
 
   has_many :posts
+  has_many :comments, through: :posts
   has_one :profile
   has_many :buttons
   has_many :authentications
@@ -20,6 +21,11 @@ class User < ActiveRecord::Base
 
   def password_login_disabled?
     password_digest.nil? || password_digest == DUMMY_PASSWORD
+  end
+
+  def receive_comment?
+    return true unless profile
+    profile.comment
   end
 
   private

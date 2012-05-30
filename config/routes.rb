@@ -16,6 +16,7 @@ AkiinyoBlog::Application.routes.draw do
 
   resource :my, controller: :my, only: [:show] do
     resources :posts, controller: 'my/posts'
+    resources :comments, controller: 'my/comments', only: [:index]
     resource :profile, controller: 'my/profiles'
     resources :buttons, controller: 'my/buttons' do
       resources :puts, controller: 'my/buttons/puts', only: [:create]
