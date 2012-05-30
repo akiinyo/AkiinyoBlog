@@ -1,11 +1,11 @@
 .resent_article
   .resent_post
     %h1 最近の記事
-    - posts.limit(5).each do |post|
+    - posts.limit(10).each do |post|
       %li=link_to post.title, [user, post]
 
   .resent_comment
     %h1 最近のコメント
     - posts.each do |post|
-      - post.comments.recent_first.limit(5).each do |comment|
+      - post.comments.recent_first.limit(10).each do |comment|
         %li=link_to "#{post.title} from #{comment.name}", [user, post]
