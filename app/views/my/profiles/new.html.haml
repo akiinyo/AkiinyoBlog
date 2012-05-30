@@ -11,7 +11,8 @@
       = f.label '紹介文'
       = f.text_area :message
 
-      = f.check_box :comment
-      = f.label :comment, 'コメントを受け付ける'
+      .checkbox
+        = f.check_box :comment
+        = f.label :comment, 'コメントを受け付ける'
 
       = f.submit "登録する", class: "btn btn-small btn-primary"
