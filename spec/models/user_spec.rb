@@ -12,7 +12,7 @@ describe User do
         user.save!
       end
 
-      specify { user.profile.comment.should == be_true }
+      specify { user.profile.comment.should be_true }
     end
   end
 end
