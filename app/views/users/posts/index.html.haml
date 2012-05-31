@@ -16,9 +16,9 @@
         %span.body= simple_format(post.body, style: "font-family: serif;")
         - post.user.buttons.each do |button|
           - puts = post.puts.where(button_id: button.id)
-          .pull-right
-            = link_to "#{button.kind}( #{ puts.count} )", my_button_puts_path(button, {post_id: post.id}), method: 'POST', class: 'btn btn-mini'
-        %span.comment= link_to "コメント(#{post.comments.count})", [@user, post]
+          .pull-right= link_to "#{button.kind}( #{ puts.count} )", my_button_puts_path(button, {post_id: post.id}), method: 'POST', class: 'btn btn-mini'
+        - if post.user.receive_comment?
+          %span.comment= link_to "コメント(#{post.comments.count})", [@user, post]
   .center= paginate @posts
 
 = render partial: 'sidebar', locals: { user: @user }

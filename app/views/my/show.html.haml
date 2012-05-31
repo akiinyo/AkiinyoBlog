@@ -6,7 +6,8 @@
     .my_posts
       %h2 記事一覧
       %ul
-        - current_user.posts.each do |post|
+        - @posts.each do |post|
           %li
             .pull-right=l post.created_at
             = link_to post.title, [current_user, post]
+      .center= paginate @posts
