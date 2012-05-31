@@ -39,7 +39,7 @@
 
 = render partial: 'sidebar', locals: { user: @post.user }
 
-- if @post.user.receive_comment?
+- if @post.user.receive_comment? && @post.comment
   .comments
     %h1 コメント
     %div

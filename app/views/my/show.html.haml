@@ -9,5 +9,5 @@
         - @posts.each do |post|
           %li
             .pull-right=l post.created_at
-            = link_to post.title, [current_user, post]
+            = link_to post.title, edit_my_post_path(post)
       .center= paginate @posts

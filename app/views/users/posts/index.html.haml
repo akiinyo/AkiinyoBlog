@@ -17,7 +17,7 @@
         - post.user.buttons.each do |button|
           - puts = post.puts.where(button_id: button.id)
           .pull-right= link_to "#{button.kind}( #{ puts.count} )", my_button_puts_path(button, {post_id: post.id}), method: 'POST', class: 'btn btn-mini'
-        - if post.user.receive_comment?
+        - if post.user.receive_comment? && post.comment
           %span.comment= link_to "コメント(#{post.comments.count})", [@user, post]
   .center= paginate @posts
 
