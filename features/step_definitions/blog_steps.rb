@@ -75,7 +75,7 @@ end
 
 Given /^投稿されているブログ記事ページを表示している$/ do
   user = User.where(name: 'akiinyo').first
-  post = user.posts.build(title: 'タイトル', body: '本文')
+  post = user.posts.build(title: 'タイトル', body: '本文', comment: true)
   post.save!
   visit user_post_path(user, post)
 end
@@ -83,4 +83,29 @@ end
 Given /^"([^"]*)"ボタンが登録されている$/ do |kind|
   user = User.find_by_name('akiinyo')
   button = user.buttons.create!(kind: kind)
+end
+
+Given /^複数のブログ記事を投稿している$/ do
+  user = User.where(name: 'akiinyo').first
+  10.times {
+    post = user.posts.build(title: 'タイトル', body: '本文', comment: true)
+    post.save!
+  }
+end
+
+Given /^前の記事のリンクをクリックする$/ do
+  user = User.where(name: 'akiinyo').first
+  last_post = user.posts.last
+  p last_post.title
+  visit user_post_path(user, last_post)
+end
+
+Then /^コメント欄が表示されてい(る|ない)こと$/ do |arg|
+  if arg == "る"
+    page.should have_css "form#new_comment"
+    page.should have_css "textarea#comment_body"
+  else
+    page.should_not have_css "form#new_comment"
+    page.should_not have_css "textarea#comment_body"
+  end
 end

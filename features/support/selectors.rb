@@ -4,6 +4,7 @@ module HtmlSelectorsHelpers
     case locator
     when "ボタン一覧" then ".buttons"
     when "ブログ記事" then ".posts"
+    when "そのブログ記事" then ".post"
     end
   end
 end
