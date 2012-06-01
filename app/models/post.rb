@@ -4,6 +4,7 @@ class Post < ActiveRecord::Base
   has_many :comments
   has_many :buttons
   has_many :puts
+  has_one :category
 
   validates :body, presence: true
   validates :title, presence: true
