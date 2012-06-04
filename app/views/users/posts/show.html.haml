@@ -24,10 +24,10 @@
 
     %br
 
+    .pull-left=l @post.created_at
     .buttons
       - @post.user.buttons.each do |button|
         - puts = @post.puts.where(button_id: button.id)
-        .pull-left=l @post.created_at
         .pull-right= link_to "#{button.kind}( #{ puts.count} )", my_button_puts_path(button, {post_id: @post.id}), method: 'POST', class: 'btn btn-mini'
 
   .border
