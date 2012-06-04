@@ -1,6 +1,7 @@
 # coding: utf-8
 class Users::PostsController < ApplicationController
   before_filter :correct_user,   only: :destroy
+  helper_method :category
 
   def index
     @user = User.find(params[:user_id])

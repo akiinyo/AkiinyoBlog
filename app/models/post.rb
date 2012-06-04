@@ -20,4 +20,8 @@ class Post < ActiveRecord::Base
   def previous
     user.posts.where('id > ?', id).order('created_at DESC').last
   end
+
+  def category
+    Category.where(id: category_id).first.kind
+  end
 end
