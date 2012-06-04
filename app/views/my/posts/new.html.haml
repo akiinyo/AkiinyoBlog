@@ -8,6 +8,9 @@
       = f.label 'タイトル'
       = f.text_field :title
 
+      = f.label 'カテゴリ'
+      = f.select :category_id, select_category
+
       = f.label '本文'
       = f.text_area :body
 

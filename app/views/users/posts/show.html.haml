@@ -16,6 +16,7 @@
 .post.span6
   %h1= @post.title
   %div
+    .pull-right= @category.kind if @category
     %span.body= simple_format(@post.body, style: "font-family: serif;")
     - if current_user?(@post.user)
       .pull-right

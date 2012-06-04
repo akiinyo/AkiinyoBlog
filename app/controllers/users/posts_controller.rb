@@ -11,6 +11,7 @@ class Users::PostsController < ApplicationController
   def show
     user = User.find(params[:user_id])
     @post = user.posts.find(params[:id])
+    @category = Category.where(id: @post.category_id).first
   end
 
   def create
