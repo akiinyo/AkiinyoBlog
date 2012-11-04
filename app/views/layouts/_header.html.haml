@@ -4,9 +4,6 @@
       %ul.nav.pull-right
         - if signed_in?
           %li
-            %i.icon-list><
-            = link_to 'ブログトップ', user_posts_path(current_user)
-          %li
             %i.icon-pencil><
             = link_to 'マイページ', my_path
           %li
