@@ -2,8 +2,4 @@
   %h1 AkiinyoBlog
   %p Simple is best
 
-  = link_to 'ブログを始める', signup_path, class:"btn btn-small btn-primary"
-  %br
-  %br
-  .information
-    %p= link_to 'Twitterアカウントでのログイン機能追加に伴う障害についてのお詫びとご報告', portal_information_path
+  =link_to image_tag('sign-in-with-twitter-link.png', alt: 'Sign in with Twitter' ), '/auth/twitter', class: 'btn'
