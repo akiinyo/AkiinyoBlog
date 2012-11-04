@@ -11,7 +11,7 @@
       = f.label '本文'
       = f.text_area :body
 
-      - if current_user.profile.comment
+      - if current_user.profile.nil? || current_user.profile.comment
         .checkbox
           = f.check_box :comment
           = f.label :comment, 'コメントを受け付ける'
