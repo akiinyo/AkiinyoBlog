@@ -109,3 +109,12 @@ Then /^コメント欄が表示されてい(る|ない)こと$/ do |arg|
     page.should_not have_css "textarea#comment_body"
   end
 end
+
+Given /^ユーザ"(.*?)"のtwitterの認証情報がある$/ do |user_name|
+  OmniAuth.config.test_mode = true
+  auth = OmniAuth.config.mock_auth[:twitter] = {
+    "provider" => 'twitter',
+    "uid" => '1234567',
+    "info" => {"nickname" => "#{user_name}"}
+  }
+end
