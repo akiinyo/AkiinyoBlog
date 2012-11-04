@@ -28,6 +28,14 @@ class User < ActiveRecord::Base
     profile.comment
   end
 
+  def to_param
+    name
+  end
+
+  def self.by_name!(name)
+    where(name: name).first
+  end
+
   private
 
   def create_remember_token

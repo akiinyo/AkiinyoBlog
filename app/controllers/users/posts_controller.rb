@@ -3,13 +3,13 @@ class Users::PostsController < ApplicationController
   before_filter :correct_user,   only: :destroy
 
   def index
-    @user = User.find(params[:user_id])
+    @user = User.by_name!(params[:user_id])
     @posts = @user.posts.page(params[:page])
     @all_posts = @user.posts
   end
 
   def show
-    user = User.find(params[:user_id])
+    user = User.by_name!(params[:user_id])
     @post = user.posts.find(params[:id])
   end
 
